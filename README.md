@@ -1,39 +1,32 @@
-# Chirpy Starter
+# Production and Logistics Systems
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+The [HTWK Leipzig Production and Logistics Systems](https://fing.htwk-leipzig.de/forschung-transfer/produktions-und-logistiksysteme) group's Jekyll site, published at <https://htwk-prodlog.github.io/>.
 
-A minimal, ready-to-use template for creating a blog with the [**Chirpy**][chirpy] Jekyll theme. Get up and running in minutes with all critical files pre-configured.
+## Local preview
 
-## Why This Starter Exists
+Install Ruby (3.4 in CI), its development headers (`ruby-dev` on Debian/Ubuntu), and Bundler, then run from the repository root:
 
-When installing Chirpy through [RubyGems.org][gem], Jekyll can only read a subset of theme files (`_data`, `_layouts`, `_includes`, `_sass`, `assets`) and limited `_config.yml` options from the gem. As a result, users cannot enjoy the full out-of-the-box experience that Chirpy offers.
-
-To unlock all features, the following files must be present in your Jekyll site:
-
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+```sh
+bundle install
+bundle exec jekyll serve --livereload
 ```
 
-This starter bundles those files from the latest **Chirpy** release along with a [CD][CD] workflow, so you can start writing immediately.
+Open <http://127.0.0.1:4000/>. The build fetches the organization's public GitHub repositories; no API key is needed for ordinary local use. If you hit GitHub's anonymous API rate limit, set `GITHUB_TOKEN` in your shell before starting Jekyll. Stop the server with Ctrl+C.
 
-## Usage
+If Bundler or the Ruby development headers are unavailable locally, use Docker instead:
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+```sh
+docker run --rm -p 4000:4000 -v "$PWD":/site -v htwk-prodlog-bundle:/bundle \
+  -w /site -e BUNDLE_PATH=/bundle ruby:3.4 \
+  sh -lc 'bundle install && bundle exec jekyll serve --host 0.0.0.0'
+```
 
-## Contributing
+Open the same local URL. Jekyll rebuilds when files change; refresh the browser to see updates. The named volume caches installed gems between runs.
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+For a production build and local link check, run `bash tools/test.sh`.
 
-## License
+## Projects and deployment
 
-This work is published under [MIT][mit] License.
+At build time, `_plugins/projects.rb` lists all public repositories in `htwk-prodlog`, including paginated results. It shows repositories with GitHub Pages enabled (`has_pages`), excluding this site repository. The gallery links to each project's Pages URL and repository; it does not need client-side API access. The GitHub Pages workflow builds and deploys on pushes to `main` or `master`, on manual dispatch, and nightly to pick up newly published projects without a commit. Enable **GitHub Actions** as the Pages build source in the repository settings.
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+The site uses Chirpy's German locale (`de-DE`). Gallery descriptions come directly from each repository's GitHub description, in whichever language its maintainers use; repositories without one get a generic German fallback. The language icon in the sidebar opens an optional, automatically translated English view through Google Translate. Browsers can also translate the German pages directly. There is no separately maintained English copy.

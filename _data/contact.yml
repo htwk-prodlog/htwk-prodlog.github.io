@@ -3,6 +3,10 @@
 - type: github
   icon: "fab fa-github"
 
+- type: "English – automatische Übersetzung"
+  icon: "fas fa-language"
+  url: "https://translate.google.com/translate?sl=de&tl=en&u=https%3A%2F%2Fhtwk-prodlog.github.io%2F"
+
 - type: twitter
   icon: "fa-brands fa-x-twitter"
 

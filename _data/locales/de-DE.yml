@@ -1,0 +1,82 @@
+# Chirpy's German labels, with the start page named for this site's About page.
+layout:
+  post: Eintrag
+  category: Kategorie
+  tag: Tag
+
+tabs:
+  home: Über uns
+  categories: Kategorien
+  tags: Tags
+  news: Neuigkeiten
+  projects: Projekte
+
+search:
+  hint: Suche
+  cancel: Abbrechen
+  no_results: Ups! Keine Einträge gefunden.
+
+panel:
+  lastmod: Kürzlich aktualisiert
+  trending_tags: Beliebte Tags
+  toc: Inhalt
+
+copyright:
+  license:
+    template: Dieser Eintrag ist vom Autor unter :LICENSE_NAME lizensiert.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+  brief: Einige Rechte vorbehalten.
+  verbose: >-
+    Alle Einträge auf dieser Seite stehen, soweit nicht anders angegeben, unter der Lizenz Creative Commons Attribution 4.0 (CC BY 4.0).
+
+meta: Erstellt mit :THEME für :PLATFORM.
+
+not_found:
+  statement: Entschuldigung, dieser Link verweist auf keine vorhandene Ressource.
+
+notification:
+  update_found: Neue Inhalte verfügbar
+  update: Neue Version
+
+theme:
+  light: Hell
+  dark: Dunkel
+  system: System
+
+post:
+  written_by: Von
+  posted: Veröffentlicht
+  updated: Aktualisiert
+  words: Wörter
+  pageview_measure: Aufrufe
+  read_time:
+    unit: Minuten
+    prompt: Lesezeit
+  edit: Diesen Eintrag bearbeiten
+  relate_posts: Weiterlesen
+  share: Teilen
+  button:
+    next: Nächster Eintrag
+    previous: Eintrag vorher
+    copy_code:
+      succeed: Kopiert!
+    share_link:
+      title: Link kopieren
+      succeed: Link erfolgreich kopiert!
+
+df:
+  post:
+    strftime: "%d.%m.%Y"
+    dayjs: "DD.MM.YYYY"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+categories:
+  category_measure:
+    singular: Kategorie
+    plural: Kategorien
+  post_measure:
+    singular: Eintrag
+    plural: Einträge
